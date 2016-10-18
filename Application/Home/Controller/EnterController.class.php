@@ -2,7 +2,7 @@
 namespace Home\Controller;
 use Think\Controller;
 
-class TestController extends Controller {
+class EnterController extends Controller {
 	 public function index(){
 		  // echo $_SERVER['PHP_SELF'];exit;
 		  //第一步：用户同意授权，获取code
@@ -32,8 +32,8 @@ class TestController extends Controller {
 		  $_SESSION['img']=$user_info['headimgurl'];
 		  $_SESSION['num']=1;
 		  //获取signature
-		  //dump($signature);
-	      $this->display();
+		  dump($signature);
+	     // $this->display();
 	 }
 	
 	 //填聚会页面
