@@ -146,7 +146,7 @@ class IndexController extends Controller {
 							       $contentStr = "<a href='http://121.42.14.98/time_count/index.php/home/Test/'>发起投票</a>";
 	                               $this -> send_text($fromUsername,$toUsername,$time,$contentStr);
 							   break;
-							    case g:
+							    case t:
 							       $contentStr = "<a href='http://www.baidu.com'>发起投票</a>";
 	                               $this -> send_text($fromUsername,$toUsername,$time,$contentStr);
 							   break;
