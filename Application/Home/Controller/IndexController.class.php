@@ -43,65 +43,66 @@ class IndexController extends Controller {
 	}
 	public $appid = "wx772ddaa0a2959c4f";
 	public $appsecret = "ede692b3f2b15cc0593d98c4e07f15a7";
+	//获取token
 	public function access_token() {
 		$url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={$this->appid}&secret={$this->appsecret}";
 		$cont = file_get_contents($url);
 		return json_decode($cont, 1);
 	}
-	function app_menu() {
-        $data = ' {
-		     "button":[
-		     {	
-		         "name":"我的计划",
-		         "sub_button":[
-		            {
-		                "type":"view",
-			            "name":"学习",
-			            "url":"http://www.baidu.com"
-		            },
-		            {
-		               "type":"click",
-		               "name":"健康",
-		               "key":"A2"
-		            }]
-		      },
-		      {
-		           "name":"学习助手",
-		           "sub_button":[
-		            {
-		               "type":"click",
-		               "name":"热门书籍",
-		               "key":"B1"
-		            },
-		            {
-		               "type":"click",
-		               "name":"课程",
-		               "key":"B2"
-		            }]
-		      },
-		      {
-		           "name":"我的生活",
-		           "sub_button":[
-		            {
-		               "type":"click",
-		               "name":"发起投票",
-		               "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx772ddaa0a2959c4f&redirect_uri=http://121.42.14.98/time_count/index.php/home/Test/index.html&response_type=code&scope=snsapi_userinfo&state=creator#wechat_redirect"
-		            },
-		            {
-		               "type":"click",
-		               "name":"免费与优惠",
-		               "key":"C2"
-		            }]
-		       }]
-		 	}';
-		$access_token = $this -> access_token();
-		$ch = curl_init('https://api.weixin.qq.com/cgi-bin/menu/create?access_token=' . $access_token['access_token']);
-		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Content-Length: ' . strlen($data)));
-		$data = curl_exec($ch);
-	}
+	// function app_menu() {
+ //        $data = ' {
+	// 	     "button":[
+	// 	     {	
+	// 	         "name":"我的计划",
+	// 	         "sub_button":[
+	// 	            {
+	// 	                "type":"view",
+	// 		            "name":"学习",
+	// 		            "url":"http://www.baidu.com"
+	// 	            },
+	// 	            {
+	// 	               "type":"click",
+	// 	               "name":"健康",
+	// 	               "key":"A2"
+	// 	            }]
+	// 	      },
+	// 	      {
+	// 	           "name":"学习助手",
+	// 	           "sub_button":[
+	// 	            {
+	// 	               "type":"click",
+	// 	               "name":"热门书籍",
+	// 	               "key":"B1"
+	// 	            },
+	// 	            {
+	// 	               "type":"click",
+	// 	               "name":"课程",
+	// 	               "key":"B2"
+	// 	            }]
+	// 	      },
+	// 	      {
+	// 	           "name":"我的生活",
+	// 	           "sub_button":[
+	// 	            {
+	// 	               "type":"click",
+	// 	               "name":"发起投票",
+	// 	               "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx772ddaa0a2959c4f&redirect_uri=http://121.42.14.98/time_count/index.php/home/Test/index.html&response_type=code&scope=snsapi_userinfo&state=creator#wechat_redirect"
+	// 	            },
+	// 	            {
+	// 	               "type":"click",
+	// 	               "name":"免费与优惠",
+	// 	               "key":"C2"
+	// 	            }]
+	// 	       }]
+	// 	 	}';
+	// 	$access_token = $this -> access_token();
+	// 	$ch = curl_init('https://api.weixin.qq.com/cgi-bin/menu/create?access_token=' . $access_token['access_token']);
+	// 	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+	// 	curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+	// 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	// 	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Content-Length: ' . strlen($data)));
+	// 	$data = curl_exec($ch);
+	// }
 	
 	public function responseMsg()
     {
@@ -147,7 +148,7 @@ class IndexController extends Controller {
 	                               $this -> send_text($fromUsername,$toUsername,$time,$contentStr);
 							   break;
 							    case t:
-							       $contentStr = "<a href='http://www.baidu.com'>发起投票</a>";
+							       $contentStr = "<a href='http://121.42.14.98/enshi/index.php/home/Enter/'>发起投票</a>";
 	                               $this -> send_text($fromUsername,$toUsername,$time,$contentStr);
 							   break;
 							   default:
