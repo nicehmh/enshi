@@ -57,7 +57,7 @@ class IndexController extends Controller {
 		            {
 		                "type":"view",
 			            "name":"学习",
-			            "url":"http://1.weixintry1.sinaapp.com/index.php/home/Weixin/"
+			            "url":"http://www.baidu.com"
 		            },
 		            {
 		               "type":"click",
@@ -146,7 +146,10 @@ class IndexController extends Controller {
 							       $contentStr = "<a href='http://121.42.14.98/time_count/index.php/home/Test/'>发起投票</a>";
 	                               $this -> send_text($fromUsername,$toUsername,$time,$contentStr);
 							   break;
-							   
+							    case g:
+							       $contentStr = "<a href='http://www.baidu.com'>发起投票</a>";
+	                               $this -> send_text($fromUsername,$toUsername,$time,$contentStr);
+							   break;
 							   default:
 							       $contentStr = "暂无此项功能";
 				                   $this -> send_text($fromUsername,$toUsername,$time,$contentStr);     
